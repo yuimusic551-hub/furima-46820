@@ -23,9 +23,16 @@ Things you may want to cover:
 
 * ...
 
-# テーブル設計
+# DB設計
 
 ## users テーブル
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false
+（ユーザー情報を保存するテーブル）
+
+## items テーブル
+（商品情報を保存するテーブル）
+
+## orders テーブル
+（購入記録を保存するテーブル）
+
+## addresses テーブル
+（発送先情報を保存するテーブル）
