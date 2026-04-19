@@ -42,43 +42,18 @@ Things you may want to cover:
 
 ## users テーブル
 （ユーザー情報を保存するテーブル）
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| nickname           | string | null: false               |
-| email              | string | null: false, unique: true |
-...（以下略）...
-
-## items テーブル
-（商品情報を保存するテーブル）
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| item_name          | string     | null: false                    |
-...（以下略）...
-
-## orders テーブル
-（購入記録を保存するテーブル）
-...（表を入れる）...
-
-## addresses テーブル
-（発送先情報を保存するテーブル）
-...（表を入れる）...
-
-
-# DB設計
-
-## users テーブル
-（ユーザー情報を保存するテーブル）
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
-| password           | string | null: false               |
+| encrypted_password | string | null: false               |
 | last_name          | string | null: false               |
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false               |
 | first_name_kana    | string | null: false               |
 | birth_date         | date   | null: false               |
+
 
 ### Association
 - has_many :items
@@ -133,4 +108,4 @@ Things you may want to cover:
 | order              | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :order
+- belongs_to :order 
