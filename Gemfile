@@ -25,6 +25,11 @@ gem "bootsnap", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
+  gem 'pry-rails'      # ← ここに追加！
+  gem 'pry-byebug'     # ← これも一緒に入れておくと、デバッグがより便利になります
+  gem 'rspec-rails', '~> 6.0.0'
+  gem 'factory_bot_rails'
+  gem 'faker'          # テスト用のランダムデータ生成用
 end
 
 group :development do
@@ -36,3 +41,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'devise'
