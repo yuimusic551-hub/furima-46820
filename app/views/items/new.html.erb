@@ -6,7 +6,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     
     <%# form_withにmodelを指定し、エラーメッセージ表示を有効化 %>
-    <%= form_with model: @item, local: true do |f| %>
+    <%= form_with model: @item, id: 'new_item', data: { turbo: false } do |f| %>
 
     <%# エラー発生時にメッセージを表示 %>
     <%= render 'shared/error_messages', model: f.object %>
