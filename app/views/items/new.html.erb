@@ -6,13 +6,10 @@
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
     
-    <%# --- ここからフォーム開始 --- %>
     <%= form_with model: @item, url: items_path, local: true, data: { turbo: false } do |f| %>
 
-      <%# エラー発生時にメッセージを表示 %>
       <%= render 'shared/error_messages', model: f.object %>
 
-      <%# 商品画像 %>
       <div class="img-upload">
         <div class="weight-bold-text">
           商品画像
@@ -24,7 +21,6 @@
         </div>
       </div>
 
-      <%# 商品名と商品説明 %>
       <div class="new-items">
         <div class="weight-bold-text">
           商品名
@@ -40,7 +36,6 @@
         </div>
       </div>
 
-      <%# 商品の詳細 %>
       <div class="items-detail">
         <div class="weight-bold-text">商品の詳細</div>
         <div class="form">
@@ -57,7 +52,6 @@
         </div>
       </div>
 
-      <%# 配送について %>
       <div class="items-detail">
         <div class="weight-bold-text question-text">
           <span>配送について</span>
@@ -82,7 +76,6 @@
         </div>
       </div>
 
-      <%# 販売価格 %>
       <div class="sell-price">
         <div class="weight-bold-text question-text">
           <span>販売価格<br>(¥300〜9,999,999)</span>
@@ -108,22 +101,19 @@
         </div>
       </div>
 
-      <%# 注意書き %>
       <div class="caution">
         <p class="sentence">禁止されている出品、行為を必ずご確認ください。</p>
         <p class="sentence">また、出品をもちまして加盟店規約に同意したことになります。</p>
       </div>
 
-      <%# 下部ボタン %>
       <div class="sell-btn-contents">
         <%= f.submit "出品する" ,class:"sell-btn" %>
         <%= link_to 'もどる', root_path, class:"back-btn" %>
       </div>
 
     <% end %>
-    <%# --- フォーム終了 --- %>
     
-  </div> <%# items-sell-main の閉じ %>
+  </div>
 
   <footer class="items-sell-footer">
     <ul class="menu">
@@ -134,4 +124,4 @@
     <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
     <p class="inc">©︎Furima,Inc.</p>
   </footer>
-</div> <%# items-sell-contents の閉じ %>
+</div>

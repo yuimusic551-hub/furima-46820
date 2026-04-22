@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(
-      :image, :item_name, :description, :category_id, :condition_id, 
+      :image, :item_name, :description, :category_id, :condition_id,
       :shipping_fee_id, :prefecture_id, :shipping_day_id, :price
     ).merge(user_id: current_user.id)
   end
@@ -60,8 +60,8 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    return if current_user.id == @item.user_id
+
+    redirect_to root_path
   end
 end
