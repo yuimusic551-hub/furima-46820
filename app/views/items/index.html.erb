@@ -117,8 +117,9 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
-    <ul class='item-lists'>
-      <% if @items.any? %>
+
+    <% if @items.any? %>
+      <ul class='item-lists'>
         <% @items.each do |item| %>
           <li class='list'>
             <%= link_to item_path(item.id) do %>
@@ -140,8 +141,10 @@
             <% end %>
           </li>
         <% end %>
-      <% else %>
-        <li class='list'>
+      </ul>
+    <% else %>
+      <div class='item-lists'>
+        <div class='list'>
           <%= link_to '#' do %>
             <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
             <div class='item-info'>
@@ -157,9 +160,9 @@
               </div>
             </div>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
