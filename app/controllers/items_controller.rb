@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーをログイン画面へ飛ばす（indexとshow以外）
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   # 指定のアクションの時だけ、事前に商品データを取得する
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :set_item, only: [:show, :edit, :update, :destroy]
   # 出品者本人でない場合はトップページへ戻す（編集・更新・削除のみ）
-  before_action :move_to_index, only: [:edit, :update, :destroy]
+  # before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
     # @items = Item.all.order('created_at DESC')
@@ -24,26 +24,26 @@ class ItemsController < ApplicationController
   end
 
   # def show
-  end
+  # end
 
-  def edit
-    # すでに set_item で @item が作られているので、中身は空でOK
-  end
+  # def edit
+  # すでに set_item で @item が作られているので、中身は空でOK
+  # end
 
-  def update
-    if @item.update(item_params)
-      # 更新に成功したら詳細画面へ戻る
-      redirect_to item_path(@item.id)
-    else
-      # 失敗したら編集画面を再表示
-      render :edit, status: :unprocessable_entity
-    end
-  end
+  # def update
+  # if @item.update(item_params)
+  # 更新に成功したら詳細画面へ戻る
+  # redirect_to item_path(@item.id)
+  # else
+  # 失敗したら編集画面を再表示
+  # render :edit, status: :unprocessable_entity
+  # end
+  # end
 
-  def destroy
-    # 商品を削除してトップページへ戻る
-    @item.destroy
-    redirect_to root_path
+  # def destroy
+  # 商品を削除してトップページへ戻る
+  # @item.destroy
+  # redirect_to root_path
   # end
 
   private
@@ -55,13 +55,13 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  # def set_item
+  # @item = Item.find(params[:id])
+  # end
 
-  def move_to_index
-    return if current_user.id == @item.user_id
+  # def move_to_index
+  # return if current_user.id == @item.user_id
 
-    redirect_to root_path
-  end
+  # redirect_to root_path
+  # end
 end
