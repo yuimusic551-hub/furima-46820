@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
-    @items = Item.all.order('created_at DESC')
+    # @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
+  # def show
   end
 
   def edit
@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
     # 商品を削除してトップページへ戻る
     @item.destroy
     redirect_to root_path
-  end
+  # end
 
   private
 
