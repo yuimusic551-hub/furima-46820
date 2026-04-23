@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーをログイン画面へ飛ばす（indexとshow以外）
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   # 指定のアクションの時だけ、事前に商品データを取得する
   # before_action :set_item, only: [:show, :edit, :update, :destroy]
   # 出品者本人でない場合はトップページへ戻す（編集・更新・削除のみ）
@@ -23,8 +23,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def show
-  # end
+  def show
+    @item = Item.find(params[:id])
+  end
 
   # def edit
   # すでに set_item で @item が作られているので、中身は空でOK
