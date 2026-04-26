@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @order_address = OrderAddress.new
-    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+    gon.public_key = ENV.fetch('PAYJP_PUBLIC_KEY', nil)
   end
 
   def create
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+      gon.public_key = ENV.fetch('PAYJP_PUBLIC_KEY', nil)
       render :index, status: :unprocessable_entity
     end
   end
@@ -37,13 +37,13 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id || @item.order.present?
-      redirect_to root_path
-    end
+    return unless current_user.id == @item.user_id || @item.order.present?
+
+    redirect_to root_path
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV.fetch('PAYJP_SECRET_KEY', nil)
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
