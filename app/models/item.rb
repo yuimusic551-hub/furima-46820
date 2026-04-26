@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-
+  has_one :order
   validates :item_name, :description, :image, presence: true
 
   validates :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :shipping_day_id,
