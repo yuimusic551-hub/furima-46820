@@ -55,12 +55,13 @@ class ItemsController < ApplicationController
 
   def move_to_index
     return unless current_user.id != @item.user_id || @item.order.present?
+
     redirect_to root_path
   end
 
   def check_item_sold_out
-    if @item.order.present?
-      redirect_to root_path
-    end
+    return unless @item.order.present?
+
+    redirect_to root_path
   end
 end
